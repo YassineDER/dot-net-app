@@ -1,6 +1,7 @@
 using BackendDotNet.Data;
 using BackendDotNet.Models.Tables;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BackendDotNet.Controllers;
 
@@ -9,17 +10,18 @@ namespace BackendDotNet.Controllers;
 public class UsersController(DataContext context) : ControllerBase {
 
     [HttpGet]
-    public ActionResult<IEnumerable<AppUser>> GetUsers()
+    public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
     {
-        var users = context.Users.ToList();
+        var users = await context.Users.ToListAsync();
         return Ok(users);
     }
 
-    [HttpGet]
-    [Route("{id}")]
-    public ActionResult<AppUser> GetUsers(int id)
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<AppUser>> GetUsers(int id)
     {
-        var user = context.Users.Find(id);
+        var user = await context.Users.FindAsync(id);
+        if (user == null) return NotFound("User does not exist with this id");
+        
         return Ok(user);
     }
 }
