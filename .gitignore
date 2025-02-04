@@ -16,6 +16,15 @@ _ReSharper*/
 *.resharper.sln
 *.resharper.sln.dotSettings
 *.resharper.sln.user
-
+.env
 .vscode
 .vs
+
+*.db
+*.db-shm
+*.db-wal
+*.log
+*.log.*
+*.log-*
+start.sh
+global.json
