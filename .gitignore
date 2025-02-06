@@ -28,3 +28,4 @@ _ReSharper*/
 *.log-*
 start.sh
 global.json
+Data/Migrations/*
