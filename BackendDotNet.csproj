@@ -28,7 +28,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Config\" />
       <Folder Include="Models\Enums\" />
     </ItemGroup>
 
