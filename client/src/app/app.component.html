@@ -1,12 +1,5 @@
 <app-nav />
 
 <div class="container h-100" style="margin-top: 100px">
-    <ul>
-        @for (user of users; track user.id) {
-            <li>{{ user.userName }}</li>
-        } @empty {
-            <li>No users found</li>
-        }
-    </ul>
-
+    <app-home />
 </div>

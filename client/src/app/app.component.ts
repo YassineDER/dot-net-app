@@ -3,11 +3,12 @@ import {RouterOutlet} from '@angular/router';
 import {NavComponent} from "./nav/nav.component";
 import {AccountService} from "./_services/account.service";
 import {User} from "./_models/user";
+import {HomeComponent} from "./home/home.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, NavComponent],
+    imports: [RouterOutlet, NavComponent, HomeComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })
@@ -16,7 +17,6 @@ export class AppComponent implements OnInit {
     users :any;
 
     ngOnInit() {
-        this.getUsers();
         this.setCurrentUser();
     }
 
@@ -25,14 +25,6 @@ export class AppComponent implements OnInit {
         if (!userString) return;
         const user = JSON.parse(userString) as User;
         this.accountService.currentUser.set(user);
-    }
-
-
-    getUsers() {
-        this.accountService.getUsers().subscribe({
-            next: users => this.users = users,
-            error: error => console.log(error)
-        });
     }
 
 }
