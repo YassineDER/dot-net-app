@@ -1,9 +1,12 @@
-<h1>Users</h1>
+<app-nav />
 
-<ul>
-  @for (user of users; track user.id){
-      <li>{{ user.userName }}</li>
-  } @empty {
-      <li>No users found</li>
-  }
-</ul>
+<div class="container h-100" style="margin-top: 100px">
+    <ul>
+        @for (user of users; track user.id) {
+            <li>{{ user.userName }}</li>
+        } @empty {
+            <li>No users found</li>
+        }
+    </ul>
+
+</div>
